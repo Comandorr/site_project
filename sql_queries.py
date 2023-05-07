@@ -38,22 +38,83 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS  links (
 	)''')
 conn.commit()
 
-# Добавление новой викторины в базу данных
-cursor.execute('''INSERT INTO quiz (name) VALUES ('Первая викторина')''')
+# Добавление новых викторин в базу данных
+cursor.execute('''INSERT INTO quiz (name) VALUES ('Вопросы про команды Python')''')
 conn.commit()
 
-# Добавление нового вопроса в базу данных
+cursor.execute('''INSERT INTO quiz (name) VALUES ('Математические примеры')''')
+conn.commit()
+
+cursor.execute('''INSERT INTO quiz (name) VALUES ('Столицы стран')''')
+conn.commit()
+
+# Добавление новых вопросов в базу данных
 cursor.execute('''INSERT INTO question (text, answer1, answer2, answer3, answer4)
 	VALUES('Что делает команда print', 
-		'печатает информацию', 
-		'печатает pdf', 
-		'печатает картинки', 
-		'ничего')
-	''')
+		'печатает информацию', 'печатает pdf', 
+		'печатает картинки', 'ничего')''')
 conn.commit()
 
-# Добавление вопроса в викторину
+cursor.execute('''INSERT INTO question (text, answer1, answer2, answer3, answer4)
+	VALUES('Что делает команда input', 
+		'позволяет ввести текст', 'позволяет ввести число', 
+		'управляет героем игры', 'ничего')''')
+conn.commit()
+
+cursor.execute('''INSERT INTO question (text, answer1, answer2, answer3, answer4)
+	VALUES('Что делает команда break', 
+		'останавливает цикл', 'паузу', 
+		'закрывает программу', 'ничего')''')
+conn.commit()
+
+cursor.execute('''INSERT INTO question (text, answer1, answer2, answer3, answer4)
+	VALUES('2+7=?', 
+		'9', '8', '10', '11')''')
+conn.commit()
+
+cursor.execute('''INSERT INTO question (text, answer1, answer2, answer3, answer4)
+	VALUES('16*2=?', 
+		'32', '30', '34', '28')''')
+conn.commit()
+
+cursor.execute('''INSERT INTO question (text, answer1, answer2, answer3, answer4)
+	VALUES('17-27', 
+		'-10', '0', '-9', '-11')''')
+conn.commit()
+
+cursor.execute('''INSERT INTO question (text, answer1, answer2, answer3, answer4)
+	VALUES('Амстердам - это столица страны?', 
+		'Нидерланды', 'Голландия', 'Дания', 'Исландия')''')
+conn.commit()
+
+cursor.execute('''INSERT INTO question (text, answer1, answer2, answer3, answer4)
+	VALUES('Загреб - это столица страны?', 
+		'Хорватия', 'Македония', 'Сербия', 'Словакия')''')
+conn.commit()
+
+cursor.execute('''INSERT INTO question (text, answer1, answer2, answer3, answer4)
+	VALUES('Улан-Батор - это столица страны?', 
+		'Монголия', 'Казахстан', 'Туркменистан', 'Грузия')''')
+conn.commit()
+
+# Добавление вопросов в викторину
 cursor.execute('''INSERT INTO links (quiz_id, question_id) VALUES (1, 1)''')
+conn.commit()
+cursor.execute('''INSERT INTO links (quiz_id, question_id) VALUES (1, 2)''')
+conn.commit()
+cursor.execute('''INSERT INTO links (quiz_id, question_id) VALUES (1, 3)''')
+conn.commit()
+cursor.execute('''INSERT INTO links (quiz_id, question_id) VALUES (2, 4)''')
+conn.commit()
+cursor.execute('''INSERT INTO links (quiz_id, question_id) VALUES (2, 5)''')
+conn.commit()
+cursor.execute('''INSERT INTO links (quiz_id, question_id) VALUES (2, 6)''')
+conn.commit()
+cursor.execute('''INSERT INTO links (quiz_id, question_id) VALUES (3, 7)''')
+conn.commit()
+cursor.execute('''INSERT INTO links (quiz_id, question_id) VALUES (3, 8)''')
+conn.commit()
+cursor.execute('''INSERT INTO links (quiz_id, question_id) VALUES (3, 9)''')
 conn.commit()
 
 # Вывод всей информации из таблицы (название таблицы указано после FROM)
