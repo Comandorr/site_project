@@ -2,10 +2,14 @@ import sqlite3
 conn = sqlite3.connect('victorines.db')
 cursor = conn.cursor()
 
-cursor.execute('''CREATE TABLE IF NOT EXISTS quiz (
-	id INTEGER PRIMARY KEY, 
-	name TEXT
-	)''')
+cursor.execute('''DROP TABLE IF EXISTS quiz''')
+conn.commit()
+cursor.execute('''DROP TABLE IF EXISTS question''')
+conn.commit()
+cursor.execute('''DROP TABLE IF EXISTS links''')
+conn.commit()
+
+cursor.execute('''CREATE TABLE IF NOT EXISTS quiz (id INTEGER PRIMARY KEY, name TEXT)''')
 conn.commit()
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS  question (
@@ -14,8 +18,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS  question (
 	answer1 TEXT,
 	answer2 TEXT,
 	answer3 TEXT,
-	answer4 TEXT
-	)''')
+	answer4 TEXT)''')
 conn.commit()
 
 cursor.execute('''PRAGMA foreign_keys = on''')
@@ -27,6 +30,25 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS  links (
 	FOREIGN KEY (question_id) REFERENCES question (id)
 	)''')
 conn.commit()
+
+cursor.execute('''INSERT INTO quiz (name) VALUES ('Первая викторина')''')
+conn.commit()
+
+cursor.execute('''INSERT INTO question (text, answer1, answer2, answer3, answer4)
+	VALUES('Что делает команда print', 
+		'печатает информацию', 
+		'печатает pdf', 
+		'печатает картинки', 
+		'ничего')
+	''')
+conn.commit()
+
+cursor.execute('''INSERT INTO links (quiz_id, question_id) VALUES (1, 1)''')
+conn.commit()
+
+cursor.execute('''SELECT * FROM links''')
+info = cursor.fetchall()
+print(info)
 
 cursor.close()
 conn.close()
