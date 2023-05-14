@@ -34,16 +34,15 @@ def test():
     cursor.close()
     conn.close()
 
-    vopros = info[nomer]
-    html = ''
-    for v in vopros:
-        html += '<p>'+v+'</p>'
-    html += '''<p><a href="/test">Далее</a></p>'''
-
-    nomer += 1
     if nomer == 3:
         return redirect(url_for('result'))
     else:
+        vopros = info[nomer]
+        html = ''
+        for v in vopros:
+            html += '<p>'+v+'</p>'
+        html += '''<p><a href="/test">Далее</a></p>'''
+        nomer += 1
         return html
 
 def result():
