@@ -6,7 +6,7 @@ quiz_nomer = 0
 
 def index():
     global nomer, quiz_nomer
-    quiz_nomer = 0
+    quiz_nomer = randint(1, 3)
     nomer = 0
     conn = sqlite3.connect('victorines.db')
     cursor = conn.cursor()
